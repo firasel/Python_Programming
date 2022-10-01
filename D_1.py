@@ -15,3 +15,12 @@ is_loading = False
 print(type(name))
 print(type(is_passed))
 print(f'My name is {name}')
+
+# User input
+name = input('Enter your name: ')
+age = input('Enter your age: ')
+print('Your name is '+name)
+print('Your age is '+age)
+num1 = int(input('Enter a number: '))
+num2 = int(input('Enter a number: '))
+print(f'Sum is {num1+num2}')
