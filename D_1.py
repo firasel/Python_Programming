@@ -24,3 +24,6 @@ print('Your age is '+age)
 num1 = int(input('Enter a number: '))
 num2 = int(input('Enter a number: '))
 print(f'Sum is {num1+num2}')
+
+
+print(f'Hey I am {input("Enter your name: ")}. My age is {input("Enter your age: ")}. I love to eat {input("Food name: ")}.')
