@@ -18,13 +18,26 @@ from math import ceil, floor
 # print(f'Num1: {num1}\nNum2: {num2}\nNum3: {num3}')
 
 # Practice Problem 3
-player1 = input("Player 1: ")
-player2 = input("Player 2: ")
-if player1 == player2:
-    print('Draw')
-if (player1 == 'rock' and player2 == 'scissors') or (player2 == 'rock' and player1 == 'scissors'):
-    print(f'Player {player1=="rock" and "1" or "2"} is the winner')
-elif (player1 == 'paper' and player2 == 'rock') or (player2 == 'paper' and player1 == 'rock'):
-    print(f'Player {player1=="paper" and "1" or "2"} is the winner')
-elif (player1 == 'scissors' and player2 == 'paper') or (player2 == 'scissors' and player1 == 'paper'):
-    print(f'Player {player1=="scissors" and "1" or "2"} is the winner')
+# player1 = input("Player 1: ")
+# player2 = input("Player 2: ")
+# if player1 == player2:
+#     print('Draw')
+# if (player1 == 'rock' and player2 == 'scissors') or (player2 == 'rock' and player1 == 'scissors'):
+#     print(f'Player {player1=="rock" and "1" or "2"} is the winner')
+# elif (player1 == 'paper' and player2 == 'rock') or (player2 == 'paper' and player1 == 'rock'):
+#     print(f'Player {player1=="paper" and "1" or "2"} is the winner')
+# elif (player1 == 'scissors' and player2 == 'paper') or (player2 == 'scissors' and player1 == 'paper'):
+#     print(f'Player {player1=="scissors" and "1" or "2"} is the winner')
+
+# Practice Problem 4
+print('Enter input: ', end="")
+while True:
+    userInput = input()
+    if userInput == "Quit":
+        break
+    elif int(userInput) == 0:
+        print(f'{userInput} is Zero')
+    elif int(userInput) < 0:
+        print(f'{userInput} is Negative')
+    elif int(userInput) > 0:
+        print(f'{userInput} is Positive')
