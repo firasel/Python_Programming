@@ -30,14 +30,25 @@ from math import ceil, floor
 #     print(f'Player {player1=="scissors" and "1" or "2"} is the winner')
 
 # Practice Problem 4
-print('Enter input: ', end="")
-while True:
-    userInput = input()
-    if userInput == "Quit":
-        break
-    elif int(userInput) == 0:
-        print(f'{userInput} is Zero')
-    elif int(userInput) < 0:
-        print(f'{userInput} is Negative')
-    elif int(userInput) > 0:
-        print(f'{userInput} is Positive')
+# print('Enter input: ', end="")
+# while True:
+#     userInput = input()
+#     if userInput == "Quit":
+#         break
+#     elif int(userInput) == 0:
+#         print(f'{userInput} is Zero')
+#     elif int(userInput) < 0:
+#         print(f'{userInput} is Negative')
+#     elif int(userInput) > 0:
+#         print(f'{userInput} is Positive')
+
+# Practice Problem 5
+for num in range(51):
+    if num % 3 == 0 and num % 5 == 0:
+        print('fizzbuzz')
+    elif num % 3 == 0:
+        print('fizz')
+    elif num % 5 == 0:
+        print('buzz')
+    else:
+        print(num)
