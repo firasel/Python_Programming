@@ -89,10 +89,30 @@
 
 
 # Problem 7
-num = int(input("Enter a number: "))
-num1 = num
-num2 = 0
-while num1 > 0:
-    num2 = int((num2*10)+(num1 % 10))
-    num1 = int(num1/10)
-print(num2 == num)
+# num = int(input("Enter a number: "))
+# num1 = num
+# num2 = 0
+# while num1 > 0:
+#     num2 = int((num2*10)+(num1 % 10))
+#     num1 = int(num1/10)
+# print(num2 == num)
+
+
+# Problem 8
+num1 = int(input("Enter the start number: "))
+num2 = int(input("Enter the end number: "))
+if num1 == 0 or num1 == 1:
+    num1 = 2
+if num1 % 2 == 0:
+    if (num1 == 2):
+        print("2 ")
+    num1 += 1
+
+for i in range(num1, num2, 2):
+    chk = True
+    for j in range(2, i):
+        if i % j == 0:
+            chk = False
+            break
+    if chk:
+        print(i)
