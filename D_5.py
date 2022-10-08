@@ -64,12 +64,26 @@
 
 
 # Problem 5
-from itertools import count
+# str1 = "Abc"
+# str2 = "Xyz"
+# res = ""
+# minSize = min(len(str1), len(str2))
+# for i in range(minSize):
+#     res += str1[i] + str2[minSize-i-1]
+# print(res)
 
-str1 = "Abc"
-str2 = "Xyz"
-res = ""
+
+# Problem 6
+str1 = "Phi"
+str2 = "Phitron"
+res = True
 minSize = min(len(str1), len(str2))
-for i in range(minSize):
-    res += str1[i] + str2[minSize-i-1]
+for i in range(len(str1)):
+    chk = True
+    for j in range(len(str2)):
+        if str1[i] == str2[j]:
+            chk = False
+    if chk:
+        res = False
 print(res)
+
