@@ -74,16 +74,25 @@
 
 
 # Problem 6
-str1 = "Phi"
-str2 = "Phitron"
-res = True
-minSize = min(len(str1), len(str2))
-for i in range(len(str1)):
-    chk = True
-    for j in range(len(str2)):
-        if str1[i] == str2[j]:
-            chk = False
-    if chk:
-        res = False
-print(res)
+# str1 = "Phi"
+# str2 = "Phitron"
+# res = True
+# minSize = min(len(str1), len(str2))
+# for i in range(len(str1)):
+#     chk = True
+#     for j in range(len(str2)):
+#         if str1[i] == str2[j]:
+#             chk = False
+#     if chk:
+#         res = False
+# print(res)
 
+
+# Problem 7
+num = int(input("Enter a number: "))
+num1 = num
+num2 = 0
+while num1 > 0:
+    num2 = int((num2*10)+(num1 % 10))
+    num1 = int(num1/10)
+print(num2 == num)
