@@ -32,3 +32,31 @@ def addNums(*nums):
 
 result = addNums(1, 2, 3, 4, 5)
 print(result)
+
+# Arguments
+
+
+def wordsPrint(word1, *words, **allWord):
+    print(word1)
+    for word in words:
+        print(word, end=" ")
+    print()
+    for key, value in allWord.items():
+        print(key, value)
+
+
+wordsPrint("Word 1", "Word 2", "Word 3", "Word 4",
+           word5="Word 5", word6="Word 6", word7="Word 7")
+
+# Golbal variable edit
+balance = 260
+
+
+def total_cost(price, quantity):
+    global balance
+    balance = balance-(price*quantity)
+
+
+print(f'Balance before: {balance}')
+total_cost(10, 3)
+print(f'Balance after: {balance}')
