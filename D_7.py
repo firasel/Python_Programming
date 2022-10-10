@@ -49,3 +49,12 @@ print(double_numbers2)
 
 bigger_numbers = list(filter(lambda x: x > 1000, double_numbers2))
 print(bigger_numbers)
+print(max(bigger_numbers))
+print(min(bigger_numbers))
+print(list(reversed(bigger_numbers)))
+
+numbers_iter = iter(bigger_numbers)
+print(next(numbers_iter))
+print(next(numbers_iter))
+print(next(numbers_iter))
+print(next(numbers_iter))
