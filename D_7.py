@@ -22,5 +22,13 @@ marks_keys = marks.keys()
 marks_values = marks.values()
 print(marks_keys)
 print(marks_values)
-marks.clear()
+# marks.clear()
 print(marks)
+
+print(sum(numbers))
+
+for mark in marks:
+    print(mark)
+
+for i, num in enumerate(numbers):
+    print(i, num)
