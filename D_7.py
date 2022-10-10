@@ -12,3 +12,15 @@ print(nums2)
 
 nums_tuple = 12, 34, 45, 12, 45, 78, 89, 90
 print(nums_tuple)
+
+# Dictionary
+marks = {'physics': 12, 'chemistry': 45, 'math': 56}
+marks['math'] = 57
+marks['english'] = 65
+print(marks)
+marks_keys = marks.keys()
+marks_values = marks.values()
+print(marks_keys)
+print(marks_values)
+marks.clear()
+print(marks)
