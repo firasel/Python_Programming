@@ -13,3 +13,8 @@ def calculation(a, b):
 
 result = calculation(20, 5)
 print(f'Addition: {result["addition"]}, Subtraction: {result["subtraction"]}')
+# Practice problem 3
+list1 = ["M", "na", "i", "Bo"]
+list2 = ["y", "me", "s", "nd"]
+result = [word+list2[i] for i, word in enumerate(list1)]
+print(result)
