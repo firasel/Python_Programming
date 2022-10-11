@@ -38,3 +38,21 @@ keys = ["name", "salary"]
 result = {key: value for key, value in sample_dict.items()
           for targetKey in keys if targetKey == key}
 print(result)
+# Practice problem 7
+sample_dict = {'a': 100, 'b': 200, 'c': 300}
+result = False
+for num in sample_dict:
+    if num == 100:
+        result = True
+        break
+if result:
+    print("Present")
+else:
+    print("Not Present")
+# Practice problem 8
+tuple1 = (11, [22, 33], 44, 55)
+for value in tuple1:
+    if type(value) == list:
+        lastNum = value[0] % 10
+        value[0] = value[0]*10+lastNum
+print(tuple1)
