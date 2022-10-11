@@ -41,7 +41,7 @@ print(result)
 # Practice problem 7
 sample_dict = {'a': 100, 'b': 200, 'c': 300}
 result = False
-for num in sample_dict:
+for num in sample_dict.values():
     if num == 100:
         result = True
         break
@@ -56,3 +56,11 @@ for value in tuple1:
         lastNum = value[0] % 10
         value[0] = value[0]*10+lastNum
 print(tuple1)
+# Practice problem 9
+tuple1 = (50, 10, 60, 70, 50)
+print(tuple1.count(50))
+# Practice problem 10
+set1 = {10, 20, 30}
+set2 = {20, 40, 50}
+set1.difference_update(set2)
+print(set1)
