@@ -27,3 +27,14 @@ list2 = [100, 200, 300, 400]
 result = zip(list1, reversed(list2))
 for num1, num2 in result:
     print(num1, num2)
+# Practice problem 5
+keys = ['Ten', 'Twenty', 'Thirty']
+values = [10, 20, 30]
+result = dict(zip(keys, values))
+print(result)
+# Practice problem 6
+sample_dict = {"name": "Kelly", "age": 25, "salary": 8000, "city": "New york"}
+keys = ["name", "salary"]
+result = {key: value for key, value in sample_dict.items()
+          for targetKey in keys if targetKey == key}
+print(result)
