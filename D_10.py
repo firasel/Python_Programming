@@ -1,12 +1,12 @@
-d = {'!': 1, '@': 2, '#': 3, '$': 4, '%': 5, '^': 6}
-
-
-def create_list(dict):
-    result = []
-    for key, value in dict.items():
-        result.append(key)
-        result.append(value)
+def clean_string(text):
+    result = ""
+    for ch in text:
+        if (ch >= 'a' and ch <= 'z') or (ch >= 'A' and ch <= 'Z'):
+            result += ch
     return result
 
 
-print(create_list(d))
+s = "P::::::,,,,,h;;;;i,,,t--r;,:o..N"
+
+output = clean_string(s)
+print(output)
