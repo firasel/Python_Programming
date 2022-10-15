@@ -1,29 +1,12 @@
-a = ['oh', 'Emelia', 'to']
-
-s = "Oh, I got two tickets for Dhaka. I and Emelia love to visit different places very much. This time we are going to Bangladesh."
+d = {'!': 1, '@': 2, '#': 3, '$': 4, '%': 5, '^': 6}
 
 
-def create_new_string():
-    output = s.replace(',', "")
-    output = output.replace('.', "")
-    output = output.split(' ')
-    output.reverse()
+def create_list(dict):
     result = []
-
-    for i in output:
-        for j in a:
-            if i.capitalize() == j.capitalize():
-                index = output.index(i)
-                if output[index-1] not in result:
-                    result.append(output[index-1])
-
-    result.reverse()
-
-    with open("out.txt", "w") as out:
-        for word in result:
-            out.write(word)
-            out.write(' ')
-        out.close()
+    for key, value in dict.items():
+        result.append(key)
+        result.append(value)
+    return result
 
 
-create_new_string()
+print(create_list(d))
