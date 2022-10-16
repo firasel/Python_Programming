@@ -1,29 +1,26 @@
-class Bank:
-    def __init__(self, balance):
-        self.balance = balance
-        self.min_withdraw = 100
-        self.max_withdraw = 10000
+class Shopper:
+    def __init__(self, name):
+        self.name = name
+        self.cart = []
 
-    def get_balance(self):
-        return self.balance
+    def addToCart(self, item, price, quantity):
+        self.cart.append({'item': item, 'price': price, 'quantity': quantity})
 
-    def deposit(self, amount):
-        self.balance += amount
-
-    def withdraw(self, amount):
-        if amount < self.min_withdraw:
-            return f'no money for you. Minimum withdraw: {self.min_withdraw}'
-        elif amount > self.max_withdraw:
-            return f'you crossed max limit: {self.max_withdraw}'
-        elif amount > self.balance:
-            return 'You are broke!!! No money for you'
+    def checkout(self, amount):
+        price = 0
+        for item in self.cart:
+            price += item['price'] * item['quantity']
+        if amount < price:
+            return f'Please give me more money: {price - amount}'
+        if amount > price:
+            return f'Here are the items and extra money: {amount - price}'
         else:
-            self.balance = self.balance - amount
-            return f'Here is your money: {amount}'
+            return 'Here are the items'
 
 
-my_bank = Bank(20000)
-print(my_bank.withdraw(1000))
-print(my_bank.get_balance())
-my_bank.deposit(2000)
-print(my_bank.get_balance())
+shopping = Shopper('C1')
+shopping.addToCart('shirt', 500, 4)
+shopping.addToCart('shoes', 1450, 1)
+shopping.addToCart('pant', 650, 1)
+
+print(shopping.checkout(5000))
