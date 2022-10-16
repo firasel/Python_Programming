@@ -1,16 +1,17 @@
-class Phone:
-    def __init__(self, brand, color, price):
-        self.brand = brand
-        self.color = color
-        self.price = price
+class Shop:
+    cart = []
 
-    def details(self):
-        return f'Brand: {self.brand}\nColor: {self.color}\nPrice: {self.price}'
+    def __init__(self, buyer):
+        self.buyer = buyer
+
+    def addToCart(self, item):
+        self.cart.append(item)
 
 
-my_phone = Phone("Samsung", "Blue", 25000)
-my_phone2 = Phone("Vivo", "Red", 20000)
+shopper_1 = Shop("SS1")
+shopper_1.addToCart("t-shirt")
+print(shopper_1.cart)
 
-print(my_phone.details())
-print()
-print(my_phone2.details())
+shopper_2 = Shop("SS2")
+shopper_2.addToCart("shoes")
+print(shopper_2.cart)
