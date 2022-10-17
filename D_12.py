@@ -1,34 +1,20 @@
-class User:
-    def __init__(self, f_name, l_name):
-        self.first = f_name
-        self.last = l_name
-        self.email = f'{self.first}.{self.last}@user.com'
+class Shopping:
+    def __init__(self, customer):
+        self.customer = customer
+        self.items = []
+        self.total = 0
 
-    @property
-    def full_name(self):
-        return f'{self.first} {self.last}'
+    @staticmethod
+    def multiply(x, y):
+        return x*y
 
-    @full_name.setter
-    def full_name(self, value):
-        first, last = value.split(' ')
-        self.first = first
-        self.last = last
-        self.email = f'{first}.{last}@user.com'
+    def add_to_cart(self, item, price, quantity):
+        item_total = price * quantity
+        self.total += item_total
+        self.items.append(item)
 
-    @full_name.deleter
-    def full_name(self):
-        del self.first
-        del self.last
-
-    def get_email(self):
-        return self.email
+    def checkout(self):
+        pass
 
 
-mark = User('md', 'sahil')
-print(mark.get_email())
-print(mark.full_name)
-mark.full_name = "Md sohel"
-print(mark.full_name)
-print(mark.get_email())
-# del mark.full_name
-print(mark.full_name)
+print(Shopping.multiply(10, 20))
