@@ -1,30 +1,22 @@
-def do_something(work):
-    print('Start the work')
-    work()
-    print('Done with the work')
+import math
+from time import time
 
 
-def practice_coding():
-    print('I am practicing python')
+def timer(func):
+    def inner(*args, **kwargs):
+        print('Time Start')
+        start = time()
+        func(*args, **kwargs)
+        end = time()
+        print(f'Time End. Total time taken {end - start}')
+    return inner
 
 
-do_something(practice_coding)
+@timer
+def get_factorial(n):
+    result = math.factorial(n)
+    print(f'Factorial of {n} is: {result}')
 
 
-def do_something2():
-    print('Inside the function do_something')
-
-    def inner_function():
-        print('Inside the inner function')
-    inner_function()
-
-    def second_function():
-        print('Inside the inner second function')
-    return second_function
-
-
-# second = do_something2()
-# print(type(second))
-# second()
-
-do_something2()()
+# timer(get_factorial)()
+get_factorial(n=20)
