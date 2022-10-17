@@ -1,29 +1,30 @@
-class Person:
-    def __init__(self, name, age, money, height=26) -> None:
-        self.name = name
-        self.age = age
-        self.money = money
-        self.name = name
-        self.height = height
-
-    def __call__(self):
-        return f'This is {self.name} with age {self.age} and have {self.money}'
-
-    def __eq__(self, other) -> bool:
-        return self.age == other.age
-
-    def __len__(self):
-        return self.height
-
-    def __add__(self, other):
-        return self.age + other.age
+def do_something(work):
+    print('Start the work')
+    work()
+    print('Done with the work')
 
 
-alim = Person('Alim', 15, 560, 35)
-dalim = Person('Dalim', 16, 700)
-print(alim+dalim)
-# x = 5
-# print(type(alim))
-print(alim())
-print("Compare two objects", alim == dalim)
-print(len(alim))
+def practice_coding():
+    print('I am practicing python')
+
+
+do_something(practice_coding)
+
+
+def do_something2():
+    print('Inside the function do_something')
+
+    def inner_function():
+        print('Inside the inner function')
+    inner_function()
+
+    def second_function():
+        print('Inside the inner second function')
+    return second_function
+
+
+# second = do_something2()
+# print(type(second))
+# second()
+
+do_something2()()
