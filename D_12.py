@@ -1,20 +1,21 @@
-class Shopping:
-    def __init__(self, customer):
-        self.customer = customer
-        self.items = []
-        self.total = 0
+class User:
+    def __init__(self, name, password, phone):
+        self.name = name
+        self.__password = password
+        self.phone = phone
 
-    @staticmethod
-    def multiply(x, y):
-        return x*y
+    def __get_password(self):
+        print(self.__password)
 
-    def add_to_cart(self, item, price, quantity):
-        item_total = price * quantity
-        self.total += item_total
-        self.items.append(item)
-
-    def checkout(self):
-        pass
+    def user_login(self, name, password):
+        if name == self.name and password == self.__password:
+            return True
+        else:
+            return False
 
 
-print(Shopping.multiply(10, 20))
+ryan = User('Ryan Dal', '124365', '0123654987')
+# print(ryan.__password)
+print(ryan.phone)
+# ryan.__get_password()
+print(ryan.user_login('Ryan Dal', '124366'))
