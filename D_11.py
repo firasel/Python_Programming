@@ -1,26 +1,50 @@
-class Shopper:
-    def __init__(self, name):
+class Student:
+    def __init__(self, name, age, id):
         self.name = name
-        self.cart = []
-
-    def addToCart(self, item, price, quantity):
-        self.cart.append({'item': item, 'price': price, 'quantity': quantity})
-
-    def checkout(self, amount):
-        price = 0
-        for item in self.cart:
-            price += item['price'] * item['quantity']
-        if amount < price:
-            return f'Please give me more money: {price - amount}'
-        if amount > price:
-            return f'Here are the items and extra money: {amount - price}'
-        else:
-            return 'Here are the items'
+        self.age = age
+        self.id = id
 
 
-shopping = Shopper('C1')
-shopping.addToCart('shirt', 500, 4)
-shopping.addToCart('shoes', 1450, 1)
-shopping.addToCart('pant', 650, 1)
+class Course:
+    def __init__(self, name, teacher):
+        self.name = name
+        self.teacher = teacher
 
-print(shopping.checkout(5000))
+
+class Teacher:
+    def __init__(self, name, course):
+        self.name = name
+        self.course = course
+
+
+class School:
+    def __init__(self, name, teachers, courses, students):
+        self.name = name
+        self.teachers = teachers
+        self.courses = courses
+        self.students = students
+
+    def get_students(self):
+        for student in self.students:
+            print(student.name)
+
+
+school_name = 'Phitron'
+
+ds_course = Course('Data Structure', 'Einstein')
+teacher_1 = Teacher('Einstein', ds_course)
+
+algo_course = Course('Algorithm', 'Edison')
+teacher_2 = Teacher('Edison', algo_course)
+
+student_1 = Student('Kamal', 19, 45)
+student_2 = Student('Jamal', 20, 46)
+student_3 = Student('Rohit', 17, 47)
+
+teachers = [teacher_1, teacher_2]
+courses = [ds_course, algo_course, teacher_2]
+students = [student_1, student_2, student_3]
+my_school = School(school_name, teachers, courses, students)
+
+print(my_school.students)
+my_school.get_students()
