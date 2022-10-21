@@ -1,20 +1,10 @@
-class PairElement:
-    def __init__(self):
-        self.indx = 1
-        self.result = [-1, -1]
-
-    def targetSum(self, l1, target):
-        if l1[0]+l1[1] == target:
-            self.result[0] = self.indx
-            self.result[1] = self.indx+1
-        else:
-            if len(l1) > 2:
-                self.indx += 1
-                self.targetSum(l1[1:], target)
-        return self.result
+class SubSets:
+    def sub(self, res, l1):
+        if l1:
+            return self.sub(res, l1[1:]) + self.sub(res + [l1[0]], l1[1:])
+        return [res]
 
 
-a = [10, 20, 10, 40, 50, 60, 70]
-target = 50
-result = PairElement().targetSum(a, target)
-print(result[0], result[1])
+a = [4, 5, 6]
+result = []
+print(SubSets().sub(result, a))
