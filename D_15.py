@@ -1,3 +1,9 @@
-s = "Programming Hero is the best"
-result = " ".join(["".join(reversed(word)) for word in s.split(' ')])
-print(result)
+s = input("enter string: ")
+result = []
+for i in range(0, len(s), 2):
+    temp = ""
+    for j in range(int(s[i+1])):
+        temp += s[i]
+    result.append(temp)
+result = "".join(sorted(result, key=str.lower))
+print("result is: ", result)
