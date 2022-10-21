@@ -1,5 +1,3 @@
-sum = 0
-nums = [float(num) for num in input("enter numbers: ").split('-')]
-for num in nums:
-    sum += num
-print("sum is:", sum)
+s = "Programming Hero is the best"
+result = " ".join(["".join(reversed(word)) for word in s.split(' ')])
+print(result)
