@@ -1,43 +1,41 @@
 # inheritance
-class Device:
-    def __init__(self, brand, price, color) -> None:
-        self.brand = brand
+class Vehicle:
+    def __init__(self, name, license, price) -> None:
+        self.name = name
+        self.license = license
         self.price = price
-        self.color = color
+        print("Init called from Vehicle")
 
-    def __repr__(self) -> str:
-        return f'{self.brand} : {self.price} : {self.color}'
-
-
-class Laptop(Device):
-    def __init__(self, brand, price, color, disc_size) -> None:
-        super().__init__(brand, price, color)
-        self.disc_size = disc_size
-
-    def run(self):
-        print("Running the laptop")
+    def start(self):
+        print(f'{self.name} started')
 
 
-class Phone(Device):
-    def __init__(self, brand, price, color, camera, sim_number) -> None:
-        super().__init__(brand, price, color)
-        self.camera = camera
-        self.sim_number = sim_number
+class Bus(Vehicle):
+    def __init__(self, name, license, price, seat, ticket_price) -> None:
+        print("Init called from Bus")
+        super().__init__(name, license, price)
+        self.seat = seat
+        self.available_seats = seat
+        self.ticket_price = ticket_price
 
-    def run(self):
-        print("Running the phone")
+    def sell_ticket(self, customer_name, quantity, amount):
+        self.available_seats -= quantity
+        remainder = amount - self.ticket_price * quantity
+        if remainder >= 0:
+            return Ticket(customer_name)
+        return 'no ticket for you'
 
 
-lenovo = Laptop("Lenovo", 35600, "Silver", "500gb")
-hp = Laptop("Hp", 45000, "Black", "256gb")
+class Ticket:
+    def __init__(self, owner) -> None:
+        self.owner = owner
 
-print(lenovo)
-print(hp)
 
-samsung = Phone("Samsung", 20000, "Black", "10mp", 2)
-iphone = Phone("IPhone", 150000, "Silver", "40mp", 1)
-print(samsung)
-print(iphone)
+class AcBus(Bus):
+    def __init__(self, name, license, price, seat, ticket_price) -> None:
+        print("Init called from ACBus")
+        super().__init__(name, license, price, seat, ticket_price)
 
-lenovo.run()
-samsung.run()
+
+city_bus = AcBus("CityBus", "JKP023", 2500000, 50, 500)
+print(city_bus.__dict__)
