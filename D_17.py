@@ -3,6 +3,9 @@ class Account:
         self.holder = holder
         self.__balance = initial_balance
 
+    def __add__(self, other):
+        return self.__balance + other.__balance
+
     def deposit(self, amount):
         print(f'Adding {amount} to your account')
         self.__balance += amount
@@ -22,9 +25,13 @@ class StudentAccount(Account):
 
 
 rashid = StudentAccount('Rashid', 60000, 'DIU')
+rashid2 = StudentAccount('Rashid 2', 6000, 'DIU')
+
 print(rashid.get_balance())
 rashid.deposit(20000)
 rashid.deposit(10000)
 print(rashid.get_balance())
 rashid.withdraw(5000)
 print(rashid.get_balance())
+
+print(rashid+rashid2)
