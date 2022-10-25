@@ -1,26 +1,15 @@
-class Student:
-    def __init__(self, name, id, marks) -> None:
-        self._name = name
-        self.__id = id
-        self.marks = marks
-
-    @property
-    def student_id(self):
-        return self.__id
-
-    @property
-    def name(self):
-        return self._name
-
-    @name.deleter
-    def name(self):
-        del self._name
+class Furniture:
+    def __init__(self) -> None:
+        pass
 
 
-rashid = Student('Rashid', 25, 60)
+class Chair(Furniture):
+    def __init__(self) -> None:
+        super().__init__()
 
-print(rashid.student_id)
-print(rashid.name)
-print(rashid.__dict__)
-del rashid.name
-print(rashid.__dict__)
+
+wooden_chair = Chair()
+
+print(issubclass(Chair, Furniture))
+print(isinstance(wooden_chair, Chair))
+print(isinstance(wooden_chair, Furniture))
