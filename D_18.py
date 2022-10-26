@@ -10,3 +10,16 @@ person2 = Person()
 person3 = Person()
 
 print(Person.count)
+
+
+def parent(func):
+    print("Parent Called")
+    return func
+
+
+@parent
+def child():
+    print("Child Called")
+
+
+child()
