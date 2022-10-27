@@ -1,36 +1,32 @@
-""" Manages Bank Account """
+""" All about mankind """
 
 
-class Account:
-    accID = 1
-
-    def __init__(self, name, age, nid_num, balance) -> None:
-        self.name = name
-        self.age = age
-        self.nid_num = nid_num
-        self.balance = balance
-
-        # update acc id
-        self.account_id = Account.accID
-        Account.accID += 1
-
-    def deposit(self, amount):
-        self.balance += amount
-
-    def withdraw(self, amount):
-        self.balance -= amount
+from xmlrpc.client import boolean
 
 
-acc_1 = Account('Rashed', 63, 61265, 500)
-acc_2 = Account('Saidul', 23, 63254, 1000)
+class Human:
+    def __init__(self, gender, height, weight) -> None:
+        self.gender = gender
+        self.height = height
+        self.weight = weight
 
-print(acc_1.account_id)
-print(acc_2.account_id)
 
-print(acc_1.balance)
+class Police(Human):
+    def __init__(self, gender, height, weight, cases, nationality) -> None:
+        super().__init__(gender, height, weight)
+        self.cases = cases
+        self.nationality = nationality
 
-acc_1.deposit(500)
-print(acc_1.balance)
 
-acc_1.withdraw(200)
-print(acc_1.balance)
+class CsEngineer(Human):
+    def __init__(self, gender, height, weight, love_to_code: boolean, has_gf: boolean) -> None:
+        super().__init__(gender, height, weight)
+        self.love_to_code = love_to_code
+        self.has_gf = has_gf
+
+
+police = Police('Male', 5.6, 56, False, 'BD')
+print(police.__dict__)
+
+eng = CsEngineer('Male', 5.8, 60, True, False)
+print(eng.__dict__)
