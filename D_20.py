@@ -1,47 +1,105 @@
 class Star_Cinema:
-    hall_list = []
+    __hall_list = []
 
-    def entry_hall(self, hall):
-        self.hall_list.append(hall)
+    def _entry_hall(self, hall):
+        self.__hall_list.append(hall)
 
 
 class Hall(Star_Cinema):
     def __init__(self, rows, cols, hall_no) -> None:
-        self.seats = {}
-        self.show_list = []
-        self.rows = rows
-        self.cols = cols
-        self.hall_no = hall_no
-        self.entry_hall(self)
+        self.__seats = {}
+        self.__show_list = []
+        self.__rows = rows
+        self.__cols = cols
+        self.__hall_no = hall_no
+        self._entry_hall(self)
 
     def entry_show(self, id, movie_name, time):
-        self.show_list.append((id, movie_name, time))
-        newSeat = [[True for i in range(self.cols)] for j in range(self.rows)]
-        self.seats[id] = newSeat
+        self.__show_list.append((id, movie_name, time))
+        newSeat = [[True for i in range(self.__cols)]
+                   for j in range(self.__rows)]
+        self.__seats[id] = newSeat
 
     def book_seats(self, cs_name, cs_phone, id, seat_list):
-        self.cs_name = cs_name
-        self.cs_phone = cs_phone
-        print(self.seats[id])
-        for item in seat_list:
-            if self.seats[id][item[0]][item[1]] == True:
-                self.seats[id][item[0]][item[1]] = False
-            else:
+        flag = 1
+        show = ()
+        for item in self.__show_list:
+            if item[0] == id:
+                flag = 0
+                show = item
+                break
+        if flag:
+            print(f"\n\n{'-'*15}\nId didn't match with any show!\n{'-'*15}\n\n")
+        else:
+            bookedSeat = ""
+            for item in seat_list:
+                if self.__rows > item[0] and self.__cols > item[1]:
+                    if self.__seats[id][item[0]][item[1]] == True:
+                        self.__seats[id][item[0]][item[1]] = False
+                        bookedSeat += f'{chr(65+item[0])}{item[1]} '
+                    else:
+                        print(
+                            f"\n\n{'-'*15}\nTHESE SEATS WERE BOOKED - {chr(65+item[0])}{item[1]}\n{'-'*15}\n\n")
+                else:
+                    print(
+                        f"\n\n{'-'*15}\nINVALID SEAT NO - {chr(65+item[0])}{item[1]}. TRY AGAIN\n{'-'*15}\n\n")
+            if bookedSeat != "":
                 print(
-                    f'Row {item[0]}, Col {item[1]} this seat is not available')
+                    f"\n{'#'*5} TICKET BOOKED SUCCESSFULLY!! {'#'*5}\n{'-'*65}\n\nNAME: {cs_name}\nPHONE NUMBER: {cs_phone}\n\nMOVIE NAME: {show[1]}\t\tMOVIE TIME: {show[2]}\nTICKETS: {bookedSeat}\nHALL:{self.__hall_no}\n\n{'-'*65}\n")
+
+    def view_show_list(self):
+        print(f'\n\n{"-"*70}\n')
+        for item in self.__show_list:
+            print(
+                f'MOVIE NAME: {item[1]}\tSHOW ID: {item[0]}\tTIME: {item[2]}')
+        print(f'\n{"-"*70}\n\n')
+
+    def view_available_seats(self, id):
+        flag = 1
+        for item in self.__show_list:
+            if item[0] == id:
+                flag = 0
+                print(f'\n\nMOVIE NAME: {item[1]}\tTIME: {item[2]}')
+                break
+        if flag:
+            print(f"\n\n{'-'*15}\nId didn't match with any show!\n{'-'*15}\n\n")
+        else:
+            print(f'X for already booked seats\n{"-"*50}\n')
+            for i, seatCol in enumerate(self.__seats[id]):
+                for j, val in enumerate(seatCol):
+                    if val:
+                        print(f'{chr(65+i)}{j}', end="\t")
+                    else:
+                        print("X", end="\t")
+                print()
+            print(f'\n{"-"*50}\n\n')
 
 
-hall1 = Hall(3, 2, 1)
-hall2 = Hall(15, 10, 2)
-hall3 = Hall(5, 15, 3)
+hall = Hall(4, 5, "A10")
+hall.entry_show("mov1", "Black Adam", "Nov 15 2022, 10:00 PM")
+hall.entry_show("mov2", "Superman", "Nov 18 2022, 11:00 PM")
 
-hall1.entry_show("1", "Mr. Robot", "22 Oct 2022, 08:00 pm")
-# hall1.entry_show(2, "Mr. Robot 2", "23 Oct 2022, 07:00 pm")
-hall1.book_seats("Mr. Abc", "01236547845", "1", [
-                 (0, 0), (0, 1), (2, 0), (2, 1)])
 
-print(hall1.__dict__)
-
-# print(hall1.hall_list)
-# print()
-# print(hall3.hall_list)
+while True:
+    userInput = int(input(
+        "1. VIEW ALL SHOWS TODAY\n2. VIEW AVAILABLE SEATS\n3. BOOK TICKET\nENTER OPTION: "))
+    if userInput == 1:
+        hall.view_show_list()
+    elif userInput == 2:
+        showId = input("ENTER SHOW ID: ")
+        hall.view_available_seats(showId)
+    elif userInput == 3:
+        cs_name = input("ENTER CUSTOMER NAME: ")
+        cs_phone = input("ENTER CUSTOMER PHONE NUMBER: ")
+        showId = input("ENTER SHOW ID: ")
+        numsOfTicket = int(input("ENTER NUMBER OF TICKETS: "))
+        seat_list = []
+        if numsOfTicket < 1:
+            print(f"\n\n{'-'*15}\nNumber of tickets not valid!\n{'-'*15}\n\n")
+        else:
+            for i in range(numsOfTicket):
+                seat = input("ENTER SEAT NO: ")
+                seat_list.append((ord(seat[0])-65, int(seat[1:])))
+            hall.book_seats(cs_name, cs_phone, showId, seat_list)
+    else:
+        break
