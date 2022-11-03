@@ -1,0 +1,10 @@
+[
+  {
+    "name":"Mobile 1",
+    "price": 160
+  },
+  {
+    "name":"Mobile 2",
+    "price": 260
+  }
+]
