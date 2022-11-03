@@ -1,9 +1,17 @@
-exStr = "HumptyDumptysatonawallHumptyDumptyhadagreatfallAlltheKingshorsesandalltheKingsmenCouldntputHumptyDumptyinhisplaceagain"
+exStr = "We tried list and we tried dicts also we tried Zen"
 
 
-def subStr(st, end, str):
-    return str[st:end+1]
+def countWord(wordArr):
+    wordDict = {}
+    for word in wordArr:
+        if word in wordDict.keys():
+            wordDict[word] = wordDict[word]+1
+        else:
+            wordDict[word] = 1
+    return wordDict
 
 
-print(subStr(22, 27, exStr))
-print(subStr(97, 102, exStr))
+wordArr = exStr.split(' ')
+wordDict = countWord(wordArr)
+for key, val in wordDict.items():
+    print(f'{key}\t{val}')
