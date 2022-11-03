@@ -1,12 +1,20 @@
 class Item:
+    all = []
+
     def __init__(self, itemName, itemPrice) -> None:
-        assert itemPrice >= 0 and itemPrice <= 10, f'Error line 3, {itemPrice} is invalid'
         self.itemName = itemName
         self.itemPrice = itemPrice
+        self.all.append(self)
 
     def __repr__(self) -> str:
-        return f"Name: {self.itemName}, Price: {self.itemPrice}"
+        return f'Item({self.itemName}, {self.itemPrice})'
 
 
-item = Item("Car", 5)
-print(item)
+item1 = Item("Mobile1", 150)
+item2 = Item("Mobile2", 200)
+
+item1.discount = 20
+
+print(item1.__dict__)
+print(item2.__dict__)
+print(Item.all)
