@@ -6,16 +6,22 @@ class Book:
         self.pages = bookContent.split("--")
         self.currentPage = -1
 
+    def pageResize(self):
+        if self.currentPage >= len(self.pages):
+            self.currentPage -= len(self.pages)
+            self.pageResize()
+        elif self.currentPage < 0:
+            self.currentPage = 0
+
     def next(self, page=False):
         if page == False:
             self.currentPage += 1
-            if self.currentPage < len(self.pages):
-                print(self.pages[self.currentPage])
-            else:
-                self.currentPage = 0
-                print(self.pages[self.currentPage])
+            self.pageResize()
+            print(self.pages[self.currentPage])
         else:
-            print(self.pages[self.currentPage+(page-1)])
+            self.currentPage += page
+            self.pageResize()
+            print(self.pages[self.currentPage])
         print("[enter - read more, press q to quit]")
 
     def openBook(self):
