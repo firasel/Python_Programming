@@ -19,8 +19,13 @@ class AirLines:
         file.close()
         self.air_crafts = air_crafts
 
-    def get_aircraft(self, code):
-        return self.air_crafts[code]
+    def get_aircraft(self, aircraft_code):
+        return self.air_crafts[aircraft_code]
+
+    def get_aircraft_by_distance(self, distance):
+        for aircraft in self.air_crafts.values():
+            if aircraft.flight_range < distance:
+                return aircraft
 
 
 AirLines()
