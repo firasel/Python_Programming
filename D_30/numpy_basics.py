@@ -1,22 +1,38 @@
-import numpy as np
+import matplotlib.pyplot as plt
+from sklearn.datasets import load_digits
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import confusion_matrix, plot_confusion_matrix
+from sklearn.model_selection import train_test_split
 
-py_list = [1, 2, 36, 56, 49, 84]
+digits = load_digits()
 
-np_array = np.array(py_list)
-five_zeros = np.zeros(5)
-ten_ones = np.ones(10)
-sequence = np.arange(16)
-stepper = np.arange(0, 51, 5)
-spaced = np.linspace(0, 10, num=3)
+# print(digits.data.shape)
+# print(dir(digits))
 
-two_d = np.array([[1, 2], [6, 5], [4, 3], ])
+# plt.gray()
+# plt.matshow(digits.images[0])
+# plt.show()
 
-shaped = np_array.reshape(3, 2)
-changed = np.flip(shaped)
-add = two_d + changed
-back_to_one = add.flatten().sum()
-# print(back_to_one)
-# print(two_d.shape)
-# print(two_d.dtype)
-print(two_d)
-print(np.sort(two_d))
+X = digits.data
+Y = digits.target
+
+X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=0.2)
+
+# print(X_train.shape)
+# print(X_test.shape)
+
+model = LogisticRegression()
+model.fit(X_train, Y_train)
+
+# print(digits.target[1700])
+# result = model.predict([digits.data[1700]])
+# print(result)
+
+accuracy = model.score(X_test, Y_test)
+# print(accuracy)
+
+Y_predicted = model.predict(X_test)
+confusion = confusion_matrix(Y_test, Y_predicted)
+
+plot_confusion_matrix(model, X_test, Y_test)
+plt.show()
