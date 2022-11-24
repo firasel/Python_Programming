@@ -1,5 +1,7 @@
 import matplotlib.pyplot as plt
 import pandas as pd
+from sklearn.linear_model import LogisticRegression
+from sklearn.model_selection import train_test_split
 
 data = pd.read_csv('HR_comma_sep.csv')
 
@@ -35,6 +37,19 @@ merged = pd.concat([data, dummies], axis="columns")
 
 # Drop unnecessary columns
 final_data = merged.drop(['Department', 'technical'], axis='columns')
-print(final_data.columns)
-plt.scatter(x=final_data.time_spend_company, y=final_data.left)
-plt.show()
+# print(final_data.columns)
+
+# Plot data set to see the data relation
+# plt.scatter(x=final_data.time_spend_company, y=final_data.left)
+# plt.show()
+
+X = final_data.drop('left', axis='columns')
+y = final_data.left
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
+
+model = LogisticRegression()
+model.fit(X_train, y_train)
+
+accuracy = model.score(X_test, y_test)
+print(accuracy)
