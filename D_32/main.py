@@ -1,11 +1,10 @@
-def sum_odd(n):
-    total = 0
-    if (n % 2 == 0):
-        n -= 1
-    for i in range(3, n+1, 2):
-        total += i
-    return total
+def mylen(l):
+    ans = 0
+    for i in l:
+        ans += 1
+    return ans
 
 
-print(sum_odd(10))
-print(sum_odd(5))
+print(mylen([1, 4, 2, 3, 5]))
+print(mylen([2, 3, 8, 9, 0, 1, 3]))
+print(mylen([]))
