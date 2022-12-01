@@ -16,6 +16,9 @@ headers = data.columns.values
 X = data[headers[0]]
 Y = data[headers[1]]
 
+X = X.truncate(0, 4899)
+Y = Y.truncate(0, 4899)
+
 X_mean = calculate_mean(X)
 Y_mean = calculate_mean(Y)
 
