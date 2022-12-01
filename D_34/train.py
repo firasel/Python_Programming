@@ -31,5 +31,5 @@ for indx in range(len(X)):
 m = upper/lower
 c = Y_mean-(m*X_mean)
 with open("./trained/trained_data.txt", 'w') as file:
-    file.write(json.dumps({"m": m, "c": c}))
+    file.write(json.dumps({"m": m, "c": c, "Y_mean": Y_mean}))
 file.close()
