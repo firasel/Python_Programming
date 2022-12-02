@@ -1,4 +1,10 @@
-data = [{'a': 5, 'b': 10}, {'x': 15, 'y': 20}]
-for val in range(len(data)):
-    for key, val2 in data[val].items():
-        print(f"Key:{key} Value:{val2}")
+n = int(input("Enter a number: "))
+nums = [val for val in range(1, n+1)]
+for i in range(1, n+1):
+    for j in nums:
+        print(j, end="")
+    if i != n:
+        temp = nums[i-1]
+        nums[i-1] = nums[i]
+        nums[i] = temp
+    print()
