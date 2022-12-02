@@ -1,10 +1,3 @@
-n = int(input("Enter a number: "))
-nums = [val for val in range(1, n+1)]
-for i in range(1, n+1):
-    for j in nums:
-        print(j, end="")
-    if i != n:
-        temp = nums[i-1]
-        nums[i-1] = nums[i]
-        nums[i] = temp
-    print()
+lst = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+newList = [val for val in lst if val % 3 == 0]
+print(newList)
