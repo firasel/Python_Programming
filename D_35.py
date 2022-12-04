@@ -1,32 +1,60 @@
-# Global Scope
-# The Variable which can be read from anywhere in the program is known as a global scope. These variables can be accessed inside and outside the function. Here num=1 is a global variable.
-
-# Local Scope
-# The Variables which are defined in the function are a local scope of the variable. Here num=5 is a local variable that is declared and printed inside the function getNum.
-
-# Nonlocal Scope
-# Nonlocal Variable is the variable that is defined in the nested function. Here num=10 is a nonlocal variable.
-
-# Built-in Scope
-# If a Variable is not defined in local, Enclosed or global scope, then python looks for it in the built-in scope. Here pi is imported from math, and the value of pi is not defined in global, local and enclosed.
-
-from math import pi
-
-num = 1
-print("Global:", num)
+# Single Inheritance
+# When a child class inherits from only one parent class, it is called single inheritance.
+class Parent:
+    def __init__(self) -> None:
+        print("Parent class")
 
 
-def getNum():
-    num = 5
-    print("GetNum:", num)
-
-    def inner():
-        nonlocal num
-        num = 10
-        print("Inner:", num)
-    inner()
-    print("GetNum:", num)
+class Child(Parent):
+    def __init__(self) -> None:
+        super().__init__()
+        print("Child class")
 
 
-getNum()
-print("Built-in:", pi)
+Child()
+
+# Multiple inheritances
+# When a child class inherits from multiple parent classes, it is called multiple inheritances.
+
+
+class Parent1:
+    def __init__(self) -> None:
+        print("Parent1 class")
+
+
+class Parent2:
+    def __init__(self) -> None:
+        print("Parent2 class")
+
+
+class Child(Parent1, Parent2):
+    def __init__(self) -> None:
+        Parent1.__init__(self)
+        Parent2.__init__(self)
+        print("Child class")
+
+
+Child()
+
+# Multilevel inheritance
+# Multi-level inheritance is archived when a derived class inherits another derived class.
+
+
+class Parent:
+    def __init__(self) -> None:
+        print("Parent class")
+
+
+class Child(Parent):
+    def __init__(self) -> None:
+        super().__init__()
+        print("Child class")
+
+
+class GrandChild(Child):
+    def __init__(self) -> None:
+        super().__init__()
+        print("GrandChild class")
+
+
+GrandChild()
